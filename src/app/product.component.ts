@@ -13,9 +13,7 @@ import { Router } from '@angular/router';
 })
 
 export class ProductComponent {
-  
   products:Product[];
-  selectedProduct:Product;
 
   // Angular will know to supply an instance of the ProductService & Router when it creates a new ProductComponent
   // Because they are injected in the constructor
@@ -33,12 +31,12 @@ export class ProductComponent {
   }
 
   clickedProduct(product) {
-    console.log(product)
-    this.selectedProduct = product;
-
     let link = ['/detail', product.id];
     this.router.navigate(link);
+  }
 
+  addToCart(product) {
+    console.log(product)
   }
 
   mouseEnter(product) {
