@@ -5,14 +5,16 @@
 <div class="container">
     <h3 class="text-center">Available Products</h3>
     <hr />    
-
+    <div class="row">
         <div *ngFor="let product of Products">
-            <div class="col-xs-3">
+            <div class="col-xs-4">
                 <div class="thumbnail">
-                    <span class="badge">{{product.id}}</span> {{product.name}}
                     <img width="250" height="250" src={{product.src}} />
+                    <span class="badge">{{product.id}}</span> {{product.name}}
+                    <p>{{product.info}}</p>
                 </div>
             </div>
 
         </div>
+    </div>
 </div>
