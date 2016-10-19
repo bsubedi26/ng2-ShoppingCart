@@ -3,11 +3,14 @@
 <!--<search></search>-->
 
 <div class="container">
+
+    <product-detail [selectedProduct]="selectedProduct"></product-detail>
+
     <hr />    
         <div class="row">
-            <div *ngFor="let product of Products">
+            <div *ngFor="let product of products" (mouseenter)="mouseEnter(product)" (click)="clickedProduct(product)">
                 <div class="col-xs-4">
-                    <div class="thumbnail">
+                    <div class="thumbnail product">
                         <img width="250" height="250" src={{product.src}} />
                         <span class="badge">{{product.id}}</span> {{product.name}}
                         <p>{{product.info}}</p>

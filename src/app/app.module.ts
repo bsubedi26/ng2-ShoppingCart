@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 
 
 import { AppComponent } from './app.component';
+import { ProductDetailComponent } from './product-detail.component';
 import { NavBarComponent } from './components/navbar/navbar.component';
 import { SearchComponent } from './components/search/search.component';
 
@@ -13,7 +14,8 @@ import { SearchComponent } from './components/search/search.component';
   declarations: [
     AppComponent,
     NavBarComponent,
-    SearchComponent
+    SearchComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,

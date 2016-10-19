@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import axios from 'axios';
 
 @Component({
   selector: 'navbar',
@@ -7,6 +6,5 @@ import axios from 'axios';
   styleUrls: ['./navbar.component.css']
 })
 export class NavBarComponent {
-  title = 'title from AppComponent!';
 
 }
