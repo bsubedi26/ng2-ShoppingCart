@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-const routes: Routes = [];
+import { ProductComponent }  from './product.component';
+
+const routes: Routes = [
+
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
   providers: []
 })
-export class TodoCliRoutingModule { }
+export class AppRoutingModule { }
