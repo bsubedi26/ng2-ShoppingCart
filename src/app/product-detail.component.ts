@@ -7,7 +7,7 @@ import { Product } from './Product';
 })
 export class ProductDetailComponent {
 
-    // selected product is the product the user clicks, it is passed in from the app component
+    // selected product is the product the user clicks, it is passed in from the product component
     @Input() selectedProduct:Product;    
     constructor() { }
 }
