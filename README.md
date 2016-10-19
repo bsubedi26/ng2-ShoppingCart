@@ -3,6 +3,8 @@ Shopping Cart implementation using angular 2
 
 ***Installation***
 
+You need to have the angular-cli installed globally to access ng commands
+
 npm install -g angular-cli
 
 ***Usage***
