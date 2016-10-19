@@ -9,8 +9,4 @@ import axios from 'axios';
 export class NavBarComponent {
   title = 'title from AppComponent!';
 
-  clicked() {
-    console.log('click works')
-    axios.get('/api').then(data => console.log(data)) 
-  }
 }
