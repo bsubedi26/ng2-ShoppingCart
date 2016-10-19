@@ -17,4 +17,9 @@ export class ProductService {
         return Promise.resolve(PRODUCTS)
     }
 
+    getProduct(id) {
+        return this.getProducts()
+                    .then(products => products.find(product => product.id === id))
+    }
+
 }

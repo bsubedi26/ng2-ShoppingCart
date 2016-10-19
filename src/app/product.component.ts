@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Product } from './Product';
 import { ProductService } from './product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'product',
@@ -16,9 +17,12 @@ export class ProductComponent {
   products:Product[];
   selectedProduct:Product;
 
-  // Angular will know to supply an instance of the HeroService when it creates a new AppComponent
-  // Because we injected the Productservice in the constructor
-  constructor(private productservice:ProductService) {}
+  // Angular will know to supply an instance of the ProductService & Router when it creates a new ProductComponent
+  // Because they are injected in the constructor
+  constructor (
+    private productservice:ProductService,
+    private router:Router
+  ) {}
 
   getProductData() {
     this.productservice.getProducts().then(products => this.products = products)
@@ -31,9 +35,13 @@ export class ProductComponent {
   clickedProduct(product) {
     console.log(product)
     this.selectedProduct = product;
+
+    let link = ['/detail', product.id];
+    this.router.navigate(link);
+
   }
 
   mouseEnter(product) {
-    console.log(product)
+    // console.log('mouse hovered over product')
   }
 }
