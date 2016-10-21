@@ -14,6 +14,7 @@ import { ProductService } from './product.service';
 
 export class ProductDetailComponent {
     selectedProduct:Product;
+    
     constructor(
         private productService:ProductService,
         private route:ActivatedRoute,

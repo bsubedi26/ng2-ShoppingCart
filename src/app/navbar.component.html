@@ -1,3 +1,7 @@
+<!--<div *ngFor="let item of cart">
+    <span class="badge">{{item.id}}</span> <strong>{{item.name}}</strong>
+</div>-->
+
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -19,7 +23,17 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
+        <li>
+          <a routerLink="/"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
+        </li>
+        <li>
+          <div *ngIf="totalPrice">
+            <div class="thumbnail">
+              <strong>Total Items: </strong><span class="badge">{{totalItems}}</span> <strong>Total Price: ${{totalPrice}}</strong>
+            </div>
+          </div>
+        </li>
+        
       </ul>
     </div>
   </div>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Product } from './Product';
 import { ProductService } from './product.service';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'product',
@@ -9,37 +10,36 @@ import { Router } from '@angular/router';
   styleUrls: ['./product.component.css'],
   // The providers array tells Angular to create a new instance of the ProductService when it creates a new AppComponent. 
   // The AppComponent can use that service to get products and so can all the child components of its component tree.
-  providers: [ProductService]
+  providers: []
 })
 
 export class ProductComponent {
+  
   products:Product[];
 
   // Angular will know to supply an instance of the ProductService & Router when it creates a new ProductComponent
   // Because they are injected in the constructor
-  constructor (
-    private productservice:ProductService,
-    private router:Router
-  ) {}
+  constructor (private productService:ProductService, private router:Router) {
 
-  getProductData() {
-    this.productservice.getProducts().then(products => this.products = products)
   }
 
-  ngOnInit() {
-    this.getProductData()
-  }
-
+  // Dynamic route for detail info when a product is clicked
   clickedProduct(product) {
     let link = ['/detail', product.id];
     this.router.navigate(link);
   }
 
   addToCart(product) {
-    console.log(product)
+    this.productService.addToCart(product)
   }
 
-  mouseEnter(product) {
-    // console.log('mouse hovered over product')
+  getProductData() {     
+     this.productService.getProducts().then(products => this.products = products)
   }
+
+  ngOnInit() {
+    // Get initial data from productService to display on the page
+    this.getProductData()
+  }
+
 }

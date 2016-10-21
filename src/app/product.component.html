@@ -1,5 +1,5 @@
 <div class="row">
-    <div *ngFor="let product of products" (mouseenter)="mouseEnter(product)">
+    <div *ngFor="let product of products">
         <div class="col-xs-4">
             <div class="thumbnail product">
                 <img width="250" height="250" src={{product.src}} />
@@ -10,6 +10,5 @@
                 <button (click)="clickedProduct(product)" class="btn btn-sm btn-success">Details</button>
             </div>
         </div>
-
     </div>
 </div>
