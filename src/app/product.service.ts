@@ -25,8 +25,14 @@ export class ProductService {
         this.cart$.next(product)
     }
 
+    // Returns an observable for the cart
     subcribeCart() {
         return Promise.resolve(this.cart$)
+    }
+
+    // Returns an array of objects of the items in the cart
+    getCart() {
+        return Promise.resolve(this.cart);
     }
 
     getProducts() {

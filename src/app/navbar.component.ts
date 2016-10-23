@@ -42,17 +42,6 @@ export class NavBarComponent {
   
   btnClick() {
     // console.log(this.cart)
-    // let total = this.cart.reduce( (total, item) => {
-    //   total += item.price;
-
-    //   // slice excess decimal places and return the result
-    //   let str = total.toString()
-    //   let result = str.slice(0, str.indexOf('.') + 3)
-    //   result = parseFloat(result)
-    //   return result;
-    // }, 0)
-    // console.log(total)
-
   }
 
 }

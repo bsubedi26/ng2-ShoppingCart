@@ -1,0 +1,8 @@
+<div *ngIf="cart.length <= 0">
+    <h3>No items in the Cart!</h3>
+</div>
+<div *ngFor="let item of cart">
+    <h3>{{item.id}}</h3>
+</div>
+
+<!--*ngIf="teamMembers && teamMembers.length > 0">-->

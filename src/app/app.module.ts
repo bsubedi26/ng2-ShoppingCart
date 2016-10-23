@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { ProductDetailComponent } from './product-detail.component';
 import { NavBarComponent } from './navbar.component';
 import { ProductComponent } from './product.component';
+import { CartComponent }  from './cart.component';
 
 import { ProductService } from './product.service';
 
@@ -16,7 +17,8 @@ import { ProductService } from './product.service';
     AppComponent,
     NavBarComponent,
     ProductDetailComponent,
-    ProductComponent
+    ProductComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
