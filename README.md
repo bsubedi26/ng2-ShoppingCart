@@ -17,6 +17,6 @@ When back end is required, the proxying support of webpack's dev server is used 
 
 For example, if the express server is running on http://localhost:3000/ and we want all API calls to http://localhost:4200/ (port angular2 is running on) to go to that server, the express server should be running simultaneously as the angular 2 application.
 
-![Alt text](/screenshots/cart.png?raw=true "Optional Title")
-![Alt text](/screenshots/details.png?raw=true "Optional Title")
-![Alt text](/screenshots/main.png?raw=true "Optional Title")
+![Alt text](/screenshots/cart.PNG?raw=true "Optional Title")
+![Alt text](/screenshots/details.PNG?raw=true "Optional Title")
+![Alt text](/screenshots/main.PNG?raw=true "Optional Title")
