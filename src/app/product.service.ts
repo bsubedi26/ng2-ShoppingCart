@@ -13,7 +13,7 @@ import { Observable, Subject } from 'rxjs';
 export class ProductService {
 
     public cart;
-    public cart$:Subject<any>; 
+    public cart$:Subject<any>;
 
     constructor() { 
         this.cart = [];
@@ -24,7 +24,7 @@ export class ProductService {
         this.cart = [...this.cart, product]
         this.cart$.next(product)
     }
-
+    
     // Returns an observable for the cart
     subcribeCart() {
         return Promise.resolve(this.cart$)

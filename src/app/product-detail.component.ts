@@ -8,8 +8,7 @@ import { ProductService } from './product.service';
 @Component({
     selector: 'product-detail',
     templateUrl: 'product-detail.component.html',
-    styleUrls: ['product-detail.component.css'],
-    providers: [ProductService]
+    styleUrls: ['product-detail.component.css']
 })
 
 export class ProductDetailComponent {
@@ -20,6 +19,11 @@ export class ProductDetailComponent {
         private route:ActivatedRoute,
         private location:Location
     ) { }
+
+    addToCart(product) {
+        console.log(product)
+        this.productService.addToCart(product)
+    }
 
     // When initialized, fetch for the product info based on the product id and set it as selectedProduct
     ngOnInit() {

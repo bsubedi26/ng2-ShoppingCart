@@ -34,14 +34,21 @@ export class NavBarComponent {
     // Subscribe to the observable to receive updates on the new products added to the cart 
     this.productService.subcribeCart()
       .then(obs => obs.subscribe(data => {
+        console.log(data)
         this.cart = [...this.cart, data]
         this.getPrice_Total()
-        
       }))
+
+    // this.productService.getCart()
+    //   .then(products => {
+    //     console.log(products)
+    //     products.forEach(product => {
+    //         this.cart.push(product)
+    //     })
+
+    //     this.getPrice_Total()
+    //   })
+
   }
   
-  btnClick() {
-    // console.log(this.cart)
-  }
-
 }
