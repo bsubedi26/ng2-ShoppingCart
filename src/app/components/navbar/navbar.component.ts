@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ProductService } from '../../services/product.service';
+import {CartStore} from '../../store/cart.store';
 
 @Component({
   selector: 'navbar',
@@ -9,15 +10,14 @@ import { ProductService } from '../../services/product.service';
 })
 export class NavBarComponent {
 
-  public cart = [];
+  public cart:any = [];
   
   public totalPrice;
-  public totalItems;
 
-  constructor(private productService:ProductService) {}
+  constructor(private productService:ProductService, private cartStore: CartStore) {}
 
-  getPrice_Total() {
-      let total = this.cart.reduce( (total, item) => {
+  getTotalPrice() {
+      let total = this.cart.products.reduce( (total, item) => {
         total += item.price;
         // slice excess decimal places and return the result
         let str = total.toString()
@@ -27,28 +27,13 @@ export class NavBarComponent {
       }, 0)
 
       this.totalPrice = total;
-      this.totalItems = this.cart.length; 
 
   }
   ngOnInit() {
-    // Subscribe to the observable to receive updates on the new products added to the cart 
-    this.productService.subcribeCart()
-      .then(obs => obs.subscribe(data => {
-        console.log(data)
-        this.cart = [...this.cart, data]
-        this.getPrice_Total()
-      }))
-
-    // this.productService.getCart()
-    //   .then(products => {
-    //     console.log(products)
-    //     products.forEach(product => {
-    //         this.cart.push(product)
-    //     })
-
-    //     this.getPrice_Total()
-    //   })
-
+    this.cartStore.getState().subscribe(res => {
+      this.cart = res
+      this.getTotalPrice()
+    })
   }
   
 }
