@@ -2,8 +2,9 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent }  from './app.component';
-import { ProductComponent }  from './product.component';
-import { ProductDetailComponent }  from './product-detail.component';
+import { ProductComponent }  from './components/product/product.component';
+import { ProductDetailComponent }  from './components/product-detail/product-detail.component';
+import { CartComponent }  from './components/cart/cart.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,10 @@ const routes: Routes = [
   {
     path: 'detail/:id',
     component: ProductDetailComponent
+  },
+  {
+    path: 'cart',
+    component: CartComponent
   }
 ];
 

@@ -1,7 +1,3 @@
-<!--<div *ngFor="let item of cart">
-    <span class="badge">{{item.id}}</span> <strong>{{item.name}}</strong>
-</div>-->
-
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -18,17 +14,17 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active nav-item"><a routerLink="/">Home <span class="sr-only">(current)</span></a></li>
-        <!--<li class="nav-item"><a routerLink="/">About</a></li>-->
+        <li class="nav-item"><a routerLink="/cart">Shopping Cart</a></li>
         <li class="nav-item"><a href="https://github.com/bsubedi26/ng2-ShoppingCart">Github/Source Code</a></li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a routerLink="/"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
+          <a routerLink="/cart"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
         </li>
         <li>
           <div *ngIf="totalPrice">
-            <div class="thumbnail">
+            <div class="thumbnail price">
               <strong>Total Items: </strong><span class="badge">{{totalItems}}</span> <strong>Total Price: ${{totalPrice}}</strong>
             </div>
           </div>

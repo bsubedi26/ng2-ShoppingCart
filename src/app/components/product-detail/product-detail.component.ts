@@ -2,14 +2,13 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { Product } from './Product';
-import { ProductService } from './product.service';
+import { Product } from '../../classes/Product';
+import { ProductService } from '../../services/product.service';
 
 @Component({
     selector: 'product-detail',
     templateUrl: 'product-detail.component.html',
-    styleUrls: ['product-detail.component.css'],
-    providers: [ProductService]
+    styleUrls: ['product-detail.component.scss']
 })
 
 export class ProductDetailComponent {
@@ -20,6 +19,11 @@ export class ProductDetailComponent {
         private route:ActivatedRoute,
         private location:Location
     ) { }
+
+    addToCart(product) {
+        console.log(product)
+        this.productService.addToCart(product)
+    }
 
     // When initialized, fetch for the product info based on the product id and set it as selectedProduct
     ngOnInit() {

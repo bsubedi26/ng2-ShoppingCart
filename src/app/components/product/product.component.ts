@@ -1,16 +1,14 @@
 import { Component } from '@angular/core';
-import { Product } from './Product';
-import { ProductService } from './product.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+
+import { Product } from '../../classes/Product';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'product',
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.css'],
-  // The providers array tells Angular to create a new instance of the ProductService when it creates a new AppComponent. 
-  // The AppComponent can use that service to get products and so can all the child components of its component tree.
-  providers: []
+  styleUrls: ['./product.component.scss']
 })
 
 export class ProductComponent {
@@ -29,6 +27,7 @@ export class ProductComponent {
     this.router.navigate(link);
   }
 
+  // When add to cart button is clicked
   addToCart(product) {
     this.productService.addToCart(product)
   }

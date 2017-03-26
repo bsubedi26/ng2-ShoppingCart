@@ -1,3 +1,4 @@
+/* Minimal Node Server for development */
 var express = require('express');
 var app = express();
 

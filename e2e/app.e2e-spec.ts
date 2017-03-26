@@ -1,10 +1,10 @@
-import { TodoCliPage } from './app.po';
+import { Ng2CliCartPage } from './app.po';
 
-describe('todo-cli App', function() {
-  let page: TodoCliPage;
+describe('ng2-cli-cart App', () => {
+  let page: Ng2CliCartPage;
 
   beforeEach(() => {
-    page = new TodoCliPage();
+    page = new Ng2CliCartPage();
   });
 
   it('should display message saying app works', () => {

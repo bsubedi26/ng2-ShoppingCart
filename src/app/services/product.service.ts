@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { PRODUCTS } from './product-data';
-import { Product } from './Product'; 
+import { PRODUCTS } from '../classes/product-data';
+import { Product } from '../classes/Product'; 
 import { Observable, Subject } from 'rxjs';
 
 // The consumer of angular services doesn't know how the service gets the data. 
@@ -13,7 +13,7 @@ import { Observable, Subject } from 'rxjs';
 export class ProductService {
 
     public cart;
-    public cart$:Subject<any>; 
+    public cart$:Subject<any>;
 
     constructor() { 
         this.cart = [];
@@ -24,9 +24,15 @@ export class ProductService {
         this.cart = [...this.cart, product]
         this.cart$.next(product)
     }
-
+    
+    // Returns an observable for the cart
     subcribeCart() {
         return Promise.resolve(this.cart$)
+    }
+
+    // Returns an array of objects of the items in the cart
+    getCart() {
+        return Promise.resolve(this.cart);
     }
 
     getProducts() {

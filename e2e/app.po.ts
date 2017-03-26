@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class TodoCliPage {
+export class Ng2CliCartPage {
   navigateTo() {
     return browser.get('/');
   }
