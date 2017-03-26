@@ -4,10 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 
+import { MaterialModule } from '@angular/material';
+
 import { AppComponent } from './app.component';
 import {COMPONENTS} from './components';
 import { SERVICES } from './services';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,6 +18,7 @@ import { SERVICES } from './services';
     BrowserModule,
     FormsModule,
     HttpModule,
+    MaterialModule,
     AppRoutingModule
   ],
   // If service is specified in app.module (this file), then all components have access to the SAME instance of that service 
