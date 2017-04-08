@@ -3,6 +3,10 @@
     <div class="col-md-6 well">
             <span class="badge">{{selectedProduct.id}}</span> <strong>{{selectedProduct.name}}</strong>
             <p>{{selectedProduct.info}}</p>
+            <div style="display: flex">
+                <span class="padding-right-5">Quantity: </span>
+                <input type="number" [(ngModel)]="quantity">
+            </div>
             <h1 class="badge">${{selectedProduct.price}}</h1>
             <button (click)="addToCart(selectedProduct)" class="btn btn-md btn-primary">Add to Cart</button>
             <hr />

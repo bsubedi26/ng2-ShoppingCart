@@ -12,21 +12,30 @@ export class NavBarComponent {
 
   public cart:any = [];
   
-  public totalPrice;
+  public totalPrice: number;
+  public totalQuantity: any;
 
   constructor(private productService:ProductService, private cartStore: CartStore) {}
 
   getTotalPrice() {
-      let total = this.cart.products.reduce( (total, item) => {
-        total += item.price;
-        // slice excess decimal places and return the result
-        let str = total.toString()
-        let result = str.slice(0, str.indexOf('.') + 3)
-        result = parseFloat(result)
-        return result;
-      }, 0)
+    let totalCost: Array<number> = []
+    let quantity: Array<number> = []
+    let intPrice: number
+    let intQuantity: number
 
-      this.totalPrice = total;
+    this.cart.products.forEach((item, i) => {
+      intPrice = parseInt(item.price)
+      intQuantity = parseInt(item.quantity)
+      totalCost.push(intPrice)
+      quantity.push(intQuantity)
+    })
+
+    this.totalPrice = totalCost.reduce((acc, item) => {
+      return acc += item
+    }, 0)
+    this.totalQuantity = quantity.reduce((acc, item) => {
+      return acc += item
+    }, 0)
 
   }
   ngOnInit() {

@@ -11,19 +11,14 @@ import { Subscription } from 'rxjs/Subscription';
 export class CartComponent {
 
   public cart = [];
-  public totalPrice;
+  public totalPrice: number;
+  public totalQuantity: number;
   public cartSubscription: Subscription;
 
   constructor(private productService:ProductService, private cartStore: CartStore) {}
 
-  removeProduct(index) {
-
-    // this.cart.forEach((cartItem,i) => {
-    //   if (cartItem.id === product.id) {
-    //     this.cart.splice(i, 1)
-    //   }
-    // })
-    this.cartStore.removeFromCart(index)
+  removeProduct(product) {
+    this.cartStore.removeFromCart(product)
   }
 
   checkout() {
@@ -31,16 +26,23 @@ export class CartComponent {
   }
 
   getTotalPrice() {
-    let total = this.cart.reduce( (total, item) => {
-      total += item.price;
-      // slice excess decimal places and return the result
-      let str = total.toString()
-      let result = str.slice(0, str.indexOf('.') + 3)
-      result = parseFloat(result)
-      return result;
-    }, 0)
+    let totalCost: Array<number> = []
+    let quantity: Array<number> = []
+    let intPrice: number
+    let intQuantity: number
+    this.cart.forEach((item, i) => {
+      intPrice = parseInt(item.price)
+      intQuantity = parseInt(item.quantity)
+      totalCost.push(intPrice)
+      quantity.push(intQuantity)
+    })
 
-    this.totalPrice = total;
+    this.totalPrice = totalCost.reduce((acc, item) => {
+      return acc += item
+    }, 0)
+    this.totalQuantity = quantity.reduce((acc, item) => {
+      return acc += item
+    }, 0)
   }
 
   ngOnInit() {
@@ -48,7 +50,6 @@ export class CartComponent {
       this.cart = res.products
       this.getTotalPrice()
     })
-    
   }
 
   ngOnDestroy() {

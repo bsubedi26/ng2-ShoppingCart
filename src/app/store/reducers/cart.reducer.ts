@@ -14,23 +14,29 @@ const initialState: State = {
 export function reducer(state = initialState, action: Action): State {
   switch (action.type) {
     case ActionTypes.ADD_TO_CART: {
-      return Object.assign({}, state, {
+      let addProduct = Object.assign({}, action.payload.product)
+      addProduct.quantity = action.payload.quantity
+      addProduct.price = (parseInt(addProduct.price) * parseInt(addProduct.quantity)).toFixed(2)
+      return {
+        ...state,
         products: [
             ...state.products, 
-            action.payload
+            addProduct
+            // action.payload
         ]
-      })
+      }
     }
     
     case ActionTypes.REMOVE_FROM_CART: {
-      // let newState = state.products.map((cartItem, i) => {
-      //   if (i === action.payload) {
-      //     state.products.splice(i, 1)
-      //   }
-      //   return state.products
-      // })
-      // console.log(newState)
-      return Object.assign({}, state)
+      //  return a new array excluding the product that needs to be removed
+      let index = state.products.findIndex((product) => product.id === action.payload.id) 
+        return {
+          ...state,
+          products: [
+            ...state.products.slice(0, index),
+            ...state.products.slice(index + 1)  
+          ]
+        }
     }
 
     default:

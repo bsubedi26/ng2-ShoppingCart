@@ -15,6 +15,7 @@ import { CartStore } from '../../store/cart.store';
 export class ProductComponent {
   
   products:Product[];
+  quantity: number;
 
   // Angular will know to supply an instance of the ProductService & Router when it creates a new ProductComponent
   // Because they are injected in the constructor
@@ -31,7 +32,8 @@ export class ProductComponent {
   // When add to cart button is clicked
   addToCart(product) {
     // this.productService.addToCart(product)
-    this.cartStore.addToCart(product)
+    console.log(this.quantity)
+    this.cartStore.addToCart(product, this.quantity || 1)
   }
 
   getProductData() {     

@@ -14,7 +14,7 @@ import { CartStore } from '../../store/cart.store';
 
 export class ProductDetailComponent {
     selectedProduct:Product;
-    
+    quantity: number;
     constructor(
         private productService:ProductService,
         private route:ActivatedRoute,
@@ -23,7 +23,7 @@ export class ProductDetailComponent {
     ) { }
 
     addToCart(product) {
-        this.cartStore.addToCart(product)
+        this.cartStore.addToCart(product, this.quantity || 1)
     }
 
     // When initialized, fetch for the product info based on the product id and set it as selectedProduct

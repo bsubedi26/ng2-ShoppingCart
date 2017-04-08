@@ -23,10 +23,13 @@ export class CartStore {
         return this.store.select('cart');
     }
 
-    addToCart(payload) {
+    addToCart(product, quantity) {
         this.store.dispatch({
             type: ActionTypes.ADD_TO_CART,
-            payload: payload
+            payload: {
+                product,
+                quantity
+            }
         })
     }
 
