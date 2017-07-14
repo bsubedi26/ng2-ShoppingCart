@@ -7,8 +7,7 @@ Shopping Cart implementation using angular 2
 git clone git@github.com:bsubedi26/ng2-ShoppingCart.git
 cd ng2-ShoppingCart
 npm install
-npm install -g angular-cli
-No server: ng serve
+No server: npm run serve
 Server Running: npm run server (change proxy settings in proxy.conf.json file)
 ```
 
