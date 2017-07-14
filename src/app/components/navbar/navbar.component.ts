@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ProductService } from '../../services/product.service';
-import {CartStore} from '../../store/cart.store';
+import { CartAction } from 'app/store/actions/cart.actions';
 
 @Component({
   selector: 'navbar',
@@ -15,7 +15,7 @@ export class NavBarComponent {
   public totalPrice: number;
   public totalQuantity: any;
 
-  constructor(private productService:ProductService, private cartStore: CartStore) {}
+  constructor(private productService:ProductService, private cartStore: CartAction) {}
 
   getTotalPrice() {
     let totalCost: Array<number> = []

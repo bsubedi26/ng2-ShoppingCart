@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { Product } from '../../models/Product';
 import { ProductService } from '../../services/product.service';
-import { CartStore } from '../../store/cart.store';
+import { CartAction } from 'app/store/actions/cart.actions';
 
 @Component({
   selector: 'product',
@@ -19,7 +19,7 @@ export class ProductComponent {
 
   // Angular will know to supply an instance of the ProductService & Router when it creates a new ProductComponent
   // Because they are injected in the constructor
-  constructor (private productService:ProductService, private router:Router, private cartStore: CartStore) {
+  constructor (private productService:ProductService, private router:Router, private cartStore: CartAction) {
 
   }
 

@@ -12,7 +12,7 @@ import { Observable, Subject } from 'rxjs';
 @Injectable()
 export class ProductService {
 
-    constructor() { 
+    constructor() {
 
     }
 

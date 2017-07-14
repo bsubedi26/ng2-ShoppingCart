@@ -1,7 +1,7 @@
 <div class="row">
     <div *ngFor="let product of products">
-        <div class="col-xs-4">
-            <md-card class="example-card">
+        <div class="col-xs-4 padding-10">
+            <md-card class="card-container-phone">
                 <md-card-header>
                     <div md-card-avatar class="example-header-image"></div>
                     <md-card-title>
@@ -9,7 +9,7 @@
                     </md-card-title>
                 </md-card-header>
 
-                <img width="220" height="220" src={{product.src}} />
+                <img width="220" height="220" class="image-align-center padding-bottom-10" src={{product.src}} />
                 <md-card-content>
                 <p>{{product.info}}</p>
                 </md-card-content>

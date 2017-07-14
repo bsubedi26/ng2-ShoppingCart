@@ -11,10 +11,11 @@ import { DBModule } from '@ngrx/db';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppComponent } from './app.component';
-import {COMPONENTS} from './components';
+import { COMPONENTS } from './components';
 import { SERVICES } from './services';
+import { ACTIONS } from './store/actions';
 import { reducer } from './store/reducers';
-import { CartStore } from './store/cart.store';
+import { nrgxEffects } from './store/effects';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { CartStore } from './store/cart.store';
     COMPONENTS
   ],
   imports: [
+    nrgxEffects,
     BrowserModule,
     FormsModule,
     HttpModule,
@@ -62,7 +64,7 @@ import { CartStore } from './store/cart.store';
   // If service is specified in app.module (this file), then all components have access to the SAME instance of that service 
   // This is useful when exactly one object is needed to coordinate actions across the system.
   // This is an example of the singleton pattern (Design pattern that restricts the instantiation of a class to one object) 
-  providers: [SERVICES, CartStore],
+  providers: [ SERVICES, ACTIONS ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

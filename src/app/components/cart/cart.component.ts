@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ProductService } from '../../services/product.service';
-import { CartStore } from '../../store/cart.store';
 import { Subscription } from 'rxjs/Subscription';
+import { CartAction } from 'app/store/actions/cart.actions';
 
 @Component({
   selector: 'cart',
@@ -15,7 +15,7 @@ export class CartComponent {
   public totalQuantity: number;
   public cartSubscription: Subscription;
 
-  constructor(private productService:ProductService, private cartStore: CartStore) {}
+  constructor(private productService:ProductService, private cartStore: CartAction) {}
 
   removeProduct(product) {
     this.cartStore.removeFromCart(product)

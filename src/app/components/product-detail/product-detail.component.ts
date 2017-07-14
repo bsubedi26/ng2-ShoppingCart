@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 
 import { Product } from '../../models/Product';
 import { ProductService } from '../../services/product.service';
-import { CartStore } from '../../store/cart.store';
+import { CartAction } from 'app/store/actions/cart.actions';
 
 @Component({
     selector: 'product-detail',
@@ -19,7 +19,7 @@ export class ProductDetailComponent {
         private productService:ProductService,
         private route:ActivatedRoute,
         private location:Location,
-        private cartStore: CartStore
+        private cartStore: CartAction
     ) { }
 
     addToCart(product) {

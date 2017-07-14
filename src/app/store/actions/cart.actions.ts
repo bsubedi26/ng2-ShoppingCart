@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { type } from './utils/type-cache';
 import { Observable } from 'rxjs/Observable';
+
+function type(action) {
+  return action;
+}
 
 export const ActionTypes = {
   SEARCH:           type('[Cart] Search'),
@@ -13,17 +16,17 @@ export const ActionTypes = {
 };
 
 @Injectable()
-export class CartStore {
-    state: any;
-    constructor(private store: Store<any>) {
-        this.state = this.getState();
-    }
+export class CartAction {
 
+    constructor(private store: Store<any>) {
+
+    }
     getState(): Observable<any> {
         return this.store.select('cart');
     }
 
     addToCart(product, quantity) {
+        console.log('add,', product)
         this.store.dispatch({
             type: ActionTypes.ADD_TO_CART,
             payload: {
