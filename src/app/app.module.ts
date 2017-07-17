@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 
-import { MaterialModule } from '@angular/material';
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { DBModule } from '@ngrx/db';
@@ -14,9 +14,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppComponent } from './app.component';
 import { COMPONENTS } from './components';
 import { SERVICES } from './services';
-import { ACTIONS } from './store';
-import { reducer } from './store';
-import { ngrxEffects } from './store';
+import { ACTIONS } from './common';
+import { reducer } from './common';
+import { ngrxEffects } from './common';
 
 @NgModule({
   declarations: [
@@ -29,8 +29,8 @@ import { ngrxEffects } from './store';
     BrowserModule,
     FormsModule,
     HttpModule,
-    MaterialModule,
     AppRoutingModule,
+    NgbModule.forRoot(),
 
     /**
      * StoreModule.provideStore is imported once in the root module, accepting a reducer

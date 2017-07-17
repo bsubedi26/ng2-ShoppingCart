@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { YoutubeAction } from 'app/common/actions/youtube.actions';
+import { Component, ViewChild } from '@angular/core';
 import { ProductService } from '../../services/product.service';
-import { CartAction } from 'app/store/actions/cart.actions';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -11,42 +11,26 @@ import { CartAction } from 'app/store/actions/cart.actions';
 })
 export class NavBarComponent {
 
-  public cart: any = [];
-  public totalPrice: number;
-  public totalQuantity: any;
+  @ViewChild('inputValue') inputValue: any;
+
   public navigations = [
     { name: 'Home', path: '/'},
     { name: 'Youtube Search', path: '/youtube/search'},
     { name: 'Shopping Cart', path: '/cart'},
   ];
-  constructor(private productService:ProductService, private cartStore: CartAction) {}
+  constructor(private productService:ProductService, private youtubeAction: YoutubeAction) {}
 
-  getTotalPrice() {
-    let totalCost: Array<number> = []
-    let quantity: Array<number> = []
-    let intPrice: number
-    let intQuantity: number
-
-    this.cart.products.forEach((item, i) => {
-      intPrice = parseInt(item.price)
-      intQuantity = parseInt(item.quantity)
-      totalCost.push(intPrice)
-      quantity.push(intQuantity)
-    })
-
-    this.totalPrice = totalCost.reduce((acc, item) => {
-      return acc += item
-    }, 0)
-    this.totalQuantity = quantity.reduce((acc, item) => {
-      return acc += item
-    }, 0)
-
-  }
   ngOnInit() {
-    this.cartStore.getState().subscribe(res => {
-      this.cart = res
-      this.getTotalPrice()
-    })
+ 
+  }
+
+  handleSearchSubmit() {
+    console.log('submit search input ', this.inputValue.nativeElement.value);
+    const searchTerm = this.inputValue.nativeElement.value;
+    
+    this.youtubeAction.searchVideos(searchTerm)
+      .then(data => console.log(data))
+      .catch(data => console.log(data));
   }
   
 }

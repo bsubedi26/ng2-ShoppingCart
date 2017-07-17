@@ -1,14 +1,8 @@
-.btn-primary {
-    background-color: #585b6f;
-}
+$whiteColor: white;
 
-.btn-success {
-    background-color:  #929abf;
-}
-
-.btn-danger {
-    background-color: #ce7a7d;
-}
+nav {
+  background-color: $whiteColor;
+} 
 .text-align-center {
   text-align: center;
 }

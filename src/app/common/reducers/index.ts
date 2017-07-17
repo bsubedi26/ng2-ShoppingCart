@@ -5,16 +5,13 @@ import {storeLogger} from 'ngrx-store-logger';
 
 // import { createSelector } from 'reselect';
 import { environment } from '../../../environments/environment';
-import * as fromCart from './cart.reducer';
 import * as fromYoutube from './youtube.reducer';
 
 export interface State {
-  cart: fromCart.ICartState;
   youtube: fromYoutube.IYoutubeState;
 }
 
 const reducers = {
-  cart: fromCart.reducer,
   youtube: fromYoutube.reducer,
 };
 

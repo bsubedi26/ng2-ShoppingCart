@@ -2,8 +2,7 @@ import { Component, Input, OnInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
-import { CartAction } from 'app/store/actions/cart.actions';
-import { YoutubeAction } from 'app/store/actions/youtube.actions';
+import { YoutubeAction } from 'app/common/actions/youtube.actions';
 
 import { Store } from '@ngrx/store';
 // npm install yt-player
@@ -30,13 +29,13 @@ export class YoutubeResultsComponent implements OnInit {
 
   constructor(private youtubeAction: YoutubeAction, private elementRef: ElementRef) {
     this.el = elementRef.nativeElement;
-    console.log(this.el);
-    this.youtubePlayer = new YTPlayer(this.el);
-    this.youtubePlayer.load('GKSRyLdjsPA')
-    this.youtubePlayer.setVolume(100)
-    this.youtubePlayer.on('playing', () => {
-      console.log(this.youtubePlayer.getDuration());
-    });
+    // console.log(this.el);
+    // this.youtubePlayer = new YTPlayer(this.el);
+    // this.youtubePlayer.load('GKSRyLdjsPA')
+    // this.youtubePlayer.setVolume(100)
+    // this.youtubePlayer.on('playing', () => {
+    //   console.log(this.youtubePlayer.getDuration());
+    // });
 
   }
 
