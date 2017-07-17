@@ -3,6 +3,7 @@ import { ProductService } from '../../services/product.service';
 import { CartAction } from 'app/store/actions/cart.actions';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
@@ -10,11 +11,14 @@ import { CartAction } from 'app/store/actions/cart.actions';
 })
 export class NavBarComponent {
 
-  public cart:any = [];
-  
+  public cart: any = [];
   public totalPrice: number;
   public totalQuantity: any;
-
+  public navigations = [
+    { name: 'Home', path: '/'},
+    { name: 'Youtube Search', path: '/youtube/search'},
+    { name: 'Shopping Cart', path: '/cart'},
+  ];
   constructor(private productService:ProductService, private cartStore: CartAction) {}
 
   getTotalPrice() {

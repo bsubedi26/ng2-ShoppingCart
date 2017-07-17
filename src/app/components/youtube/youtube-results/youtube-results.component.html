@@ -1,0 +1,26 @@
+<div class="row">
+    <h3>youtube results section</h3>
+
+    <div *ngFor="let item of youtubeState.results.items">
+
+        <h5>{{ item.etag }}</h5>
+        <h5>{{ item.id.videoId }}</h5>
+
+    </div>
+
+    <button (click)="checkState()" class="btn btn-md btn-primary">
+        Check State
+    </button>
+
+    <div id="player">
+
+    </div>
+    <ng-template #hide>
+        <p>Dont Show </p>
+    </ng-template>
+
+    <div *ngIf="show; else hide">
+        <p>Show </p>
+    </div>
+
+</div>

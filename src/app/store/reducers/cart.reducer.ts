@@ -2,15 +2,15 @@ import { Action } from '@ngrx/store';
 import { ActionTypes } from '../actions/cart.actions';
 import { Product } from '../../models/Product';
 
-export interface IState {
+export interface ICartState {
   products: Array<Product>;
 }
 
-const initialState: IState = {
+const _initialState: ICartState = {
   products: []
 };
 
-export const reducer = (state = initialState, action: Action): IState => {
+export const reducer = (state = _initialState, action: Action): ICartState => {
   switch (action.type) {
     case ActionTypes.ADD_TO_CART: {
       const addProduct = Object.assign({}, action.payload.product);

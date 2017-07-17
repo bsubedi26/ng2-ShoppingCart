@@ -1,18 +1,21 @@
 import { compose } from '@ngrx/core/compose';
 import { combineReducers, ActionReducer, Action } from '@ngrx/store';
 import { storeFreeze } from 'ngrx-store-freeze';
-import {storeLogger} from "ngrx-store-logger";
+import {storeLogger} from 'ngrx-store-logger';
 
 // import { createSelector } from 'reselect';
 import { environment } from '../../../environments/environment';
 import * as fromCart from './cart.reducer';
+import * as fromYoutube from './youtube.reducer';
 
 export interface State {
-  cart: fromCart.IState;
+  cart: fromCart.ICartState;
+  youtube: fromYoutube.IYoutubeState;
 }
 
 const reducers = {
-  cart: fromCart.reducer
+  cart: fromCart.reducer,
+  youtube: fromYoutube.reducer,
 };
 
 const developmentReducer: ActionReducer<State> = compose(storeFreeze, storeLogger(), combineReducers)(reducers);

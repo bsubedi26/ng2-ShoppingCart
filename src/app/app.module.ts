@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 
 import { MaterialModule } from '@angular/material';
@@ -13,9 +14,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppComponent } from './app.component';
 import { COMPONENTS } from './components';
 import { SERVICES } from './services';
-import { ACTIONS } from './store/actions';
-import { reducer } from './store/reducers';
-import { nrgxEffects } from './store/effects';
+import { ACTIONS } from './store';
+import { reducer } from './store';
+import { ngrxEffects } from './store';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { nrgxEffects } from './store/effects';
     COMPONENTS
   ],
   imports: [
-    nrgxEffects,
+    ngrxEffects,
+    BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
     HttpModule,
