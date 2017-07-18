@@ -1,6 +1,6 @@
-import { YoutubeAction } from 'app/common/actions/youtube.actions';
+import { YoutubeSearchAction, YoutubeLoadMore } from 'app/common/actions/youtube.actions';
 import { Component, ViewChild } from '@angular/core';
-import { ProductService } from '../../services/product.service';
+import { Store } from '@ngrx/store';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -12,25 +12,34 @@ import { ProductService } from '../../services/product.service';
 export class NavBarComponent {
 
   @ViewChild('inputValue') inputValue: any;
+  youtubeState: any;
 
   public navigations = [
     { name: 'Home', path: '/'},
     { name: 'Youtube Search', path: '/youtube/search'},
     { name: 'Shopping Cart', path: '/cart'},
   ];
-  constructor(private productService:ProductService, private youtubeAction: YoutubeAction) {}
+  constructor(private store: Store<any>) {
+    this.store.select('youtube').subscribe(response => {
+      this.youtubeState = response;
+    })
+  }
 
   ngOnInit() {
  
   }
 
+  handleLoadMoreVideos() {
+    this.store.dispatch(new YoutubeLoadMore(this.youtubeState)); 
+  }
+
   handleSearchSubmit() {
     console.log('submit search input ', this.inputValue.nativeElement.value);
     const searchTerm = this.inputValue.nativeElement.value;
-    
-    this.youtubeAction.searchVideos(searchTerm)
-      .then(data => console.log(data))
-      .catch(data => console.log(data));
+    this.store.dispatch(new YoutubeSearchAction(searchTerm)); 
+    // this.youtubeAction.searchVideos(searchTerm)
+    //   .then(data => console.log(data))
+    //   .catch(data => console.log(data));
   }
   
 }

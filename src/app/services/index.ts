@@ -1,5 +1,5 @@
-import {ProductService} from './product.service';
+import { HttpService } from './http.service';
 
 export const SERVICES =  [
-    ProductService
-]
+    HttpService
+];

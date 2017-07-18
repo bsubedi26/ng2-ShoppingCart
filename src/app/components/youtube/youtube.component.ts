@@ -3,8 +3,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
 import { Product } from '../../models/Product';
-import { ProductService } from '../../services/product.service';
-import { YoutubeAction } from 'app/common/actions/youtube.actions';
+// import { YoutubeAction } from 'app/common/actions/youtube.actions';
 import { Store } from '@ngrx/store';
 
 @Component({
@@ -17,7 +16,7 @@ import { Store } from '@ngrx/store';
 export class YoutubeComponent implements OnInit {
   youtubeState$: Observable<any>;
 
-  constructor (private youtubeAction: YoutubeAction, private store: Store<any>) {
+  constructor (private store: Store<any>) {
     this.youtubeState$ = this.store.select('youtube');
   }
 

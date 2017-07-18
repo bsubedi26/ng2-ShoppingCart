@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Store, Action } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import axios from 'axios';
 
-function type(action) {
+const type = (action) => {
   return action;
 }
 
@@ -11,54 +11,36 @@ export const ActionTypes = {
   YOUTUBE_SEARCH: type('[Youtube] Search'),
   YOUTUBE_SEARCH_SUCCESS: type('[Youtube] Search Success'),
   YOUTUBE_SEARCH_FAIL: type('[Youtube] Search Fail'),
+  YOUTUBE_LOAD_MORE: type('[Youtube] Search Load More'),
+  YOUTUBE_LOAD_MORE_SUCCESS: type('[Youtube] Search Load More Success'),
+  YOUTUBE_LOAD_MORE_FAIL: type('[Youtube] Search Load More Fail'),
 };
 
-@Injectable()
-export class YoutubeAction {
-
-  constructor(private store: Store<any>) {
-
-  }
-  getState(): Observable<any> {
-    return this.store.select('youtube');
-  }
-
-  searchVideos(query) {
-    return axios({
-      url: 'https://www.googleapis.com/youtube/v3/search',
-      method: 'get',
-      params: {
-        key: 'AIzaSyDZYAKp1cVowIRmnV4jXh_C2x0vDVLHvYU',
-        part: 'snippet',
-        type: 'video',
-        q: query,
-        videoDimension: '2d',
-        videoEmbeddable: 'true'
-      }
-    }).then((res) => {
-      console.log('RESPONSE ', res);
-      localStorage.setItem('lastQuery', query);
-      const results = {
-        query: query,
-        nextPageToken: res.data.nextPageToken,
-        items: res.data.items
-      };
-      this.store.dispatch({
-        type: ActionTypes.YOUTUBE_SEARCH_SUCCESS,
-        payload: {
-          results
-        }
-      });
-      return results;
-    }).catch((error) => {
-      this.store.dispatch({
-        type: ActionTypes.YOUTUBE_SEARCH_FAIL,
-        payload: {
-          error
-        }
-      });
-      return error;
-    });
+export class YoutubeSearchAction implements Action {
+  type = ActionTypes.YOUTUBE_SEARCH;
+  constructor(public payload: any) {
 
   }
-};
+}
+
+
+export class YoutubeSearchSuccess implements Action {
+  type = ActionTypes.YOUTUBE_SEARCH_SUCCESS;
+  constructor(public payload?: any) {
+
+  }
+}
+
+export class YoutubeSearchFail implements Action {
+  type = ActionTypes.YOUTUBE_SEARCH_FAIL;
+  constructor(public payload?: any) {
+
+  }
+}
+
+export class YoutubeLoadMore implements Action {
+  type = ActionTypes.YOUTUBE_LOAD_MORE;
+  constructor(public payload?: any) {
+
+  }
+}

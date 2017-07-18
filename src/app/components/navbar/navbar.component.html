@@ -1,42 +1,3 @@
-<!--<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" routerLink="/">ngCart</a>
-      
-    </div>
-
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li *ngFor = "let navigation of navigations" class="nav-item">
-          <a routerLink={{navigation.path}}>{{navigation.name}}</a>
-        </li>
-      </ul>
-      
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-          <a routerLink="/cart"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
-        </li>
-        <li>
-          <div *ngIf="totalPrice">
-            <div class="thumbnail price">
-              <strong>Total Items: </strong><span class="badge">{{ totalQuantity }}</span> <strong>Total Price: ${{ totalPrice }}</strong>
-            </div>
-          </div>
-        </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>-->
-
-
-
 <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,7 +11,13 @@
       <li *ngFor="let navigation of navigations; let index=index" class="nav-item active">
         <a class="nav-link" routerLink={{navigation.path}}>{{navigation.name}}</a>
       </li>
+
+      <li>
+      <button (click)="handleLoadMoreVideos()" class="btn btn-outline-primary my-2 my-sm-0">Load More</button>
+        
+      </li>
     </ul>
+
 
   <form (submit)="handleSearchSubmit()" class="form-inline my-2 my-lg-0">
     <input id="searchYoutube" class="form-control mr-sm-2" #inputValue type="text" placeholder="Search Youtube">
