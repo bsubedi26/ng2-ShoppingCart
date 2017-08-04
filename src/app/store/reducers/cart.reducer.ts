@@ -2,15 +2,11 @@ import { Action } from '@ngrx/store';
 import { ActionTypes } from '../actions/cart.actions';
 import { Product } from '../../models/Product';
 
-export interface IState {
-  products: Array<Product>;
-}
-
-const initialState: IState = {
+const initialState = {
   products: []
 };
 
-export const reducer = (state = initialState, action: Action): IState => {
+export default (state = initialState, action) => {
   switch (action.type) {
     case ActionTypes.ADD_TO_CART: {
       const addProduct = Object.assign({}, action.payload.product);
@@ -19,21 +15,21 @@ export const reducer = (state = initialState, action: Action): IState => {
       return {
         ...state,
         products: [
-            ...state.products,
-            addProduct
+          ...state.products,
+          addProduct
         ]
       };
     };
     case ActionTypes.REMOVE_FROM_CART: {
       //  return a new array excluding the product that needs to be removed
-      const index = state.products.findIndex((product) => product.id === action.payload.id); 
-        return {
-          ...state,
-          products: [
-            ...state.products.slice(0, index),
-            ...state.products.slice(index + 1)
-          ]
-        }
+      const index = state.products.findIndex((product) => product.id === action.payload.id);
+      return {
+        ...state,
+        products: [
+          ...state.products.slice(0, index),
+          ...state.products.slice(index + 1)
+        ]
+      }
     }
 
     default:
