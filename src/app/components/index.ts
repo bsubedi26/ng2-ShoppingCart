@@ -8,4 +8,4 @@ export const COMPONENTS = [
     NavBarComponent,
     ProductComponent,
     ProductDetailComponent
-]
+];

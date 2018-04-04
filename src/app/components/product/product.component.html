@@ -1,19 +1,19 @@
 <div class="row">
     <div *ngFor="let product of products">
         <div class="col-xs-4 padding-10">
-            <md-card class="card-container-phone">
-                <md-card-header>
+            <mat-card class="card-container-phone">
+                <mat-card-header>
                     <div md-card-avatar class="example-header-image"></div>
                     <md-card-title>
                         <span class="badge">{{product.id}}</span> <strong>{{product.name}}</strong>    
                     </md-card-title>
-                </md-card-header>
+                </mat-card-header>
 
                 <img width="220" height="220" class="image-align-center padding-bottom-10" src={{product.src}} />
-                <md-card-content>
+                <mat-card-content>
                 <p>{{product.info}}</p>
-                </md-card-content>
-                <md-card-actions>
+                </mat-card-content>
+                <mat-card-actions>
                     <div style="display: flex">
                         <span class="padding-right-5">Quantity: </span>
                         <input type="number" [(ngModel)]="quantity">
@@ -21,8 +21,8 @@
                     <h1 class="badge">${{product.price}}</h1>
                     <button (click)="addToCart(product)" class="btn btn-sm btn-primary">Add to Cart</button>
                     <button (click)="clickedProduct(product)" class="btn btn-sm btn-success">Details</button>
-                </md-card-actions>
-            </md-card>
+                </mat-card-actions>
+            </mat-card>
         </div>
 
         <!--<div class="col-xs-4">
